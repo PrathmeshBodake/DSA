@@ -1,0 +1,25 @@
+obj = real word entities
+class = group of this entities , it is blue print of obj
+
+
+/ private == within class like if we create var in class ....we able to set value using 
+            // function which are defined in this class 
+
+// default == it is by-default  we can able to use in package,class
+                //  not can able to use in subclass
+
+// protected == class,package , and outside of package means in sub class
+
+// public == class,package , subclass , and also out of package
+
+
+geter and seter
+get : to return the value
+set : to modify the value
+
+this : it is used to refer the corrent obj
+
+Encapsulation
+Inheritance 
+Abstraction
+Polymorphism
