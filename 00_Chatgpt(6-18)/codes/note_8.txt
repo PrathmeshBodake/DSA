@@ -1,0 +1,471 @@
+Here is **STRINGS (Basic → Deep)** in Java with **properties + all important methods**
+— **FULL CODE + COMMENTS + OUTPUT** (your preferred format).
+
+---
+
+# ✅ **1. STRING PROPERTIES (VERY IMPORTANT)**
+
+## ✔ **Property 1 — Strings are IMMUTABLE**
+
+Once created, you **cannot change** a string.
+
+### Example:
+
+```java
+public class StringImmutable {
+    public static void main(String[] args) {
+
+        String s = "Hello";
+        s.concat(" World");   // not added (ignored)
+        System.out.println(s);
+
+        s = s.concat(" World"); // creates new object
+        System.out.println(s);
+    }
+}
+```
+
+### OUTPUT
+
+```
+Hello
+Hello World
+```
+
+---
+
+## ✔ **Property 2 — Stored in the String Constant Pool**
+
+```java
+String a = "Java";
+String b = "Java";  // same object from pool
+```
+
+### Example
+
+```java
+public class StringPool {
+    public static void main(String[] args) {
+        String a = "Java";
+        String b = "Java";
+
+        System.out.println(a == b); // true (same object)
+    }
+}
+```
+
+### OUTPUT
+
+```
+true
+```
+
+---
+
+## ✔ **Property 3 — Using new creates a NEW object**
+
+```java
+String a = new String("Java");
+String b = new String("Java");
+```
+
+### Example
+
+```java
+public class StringNew {
+    public static void main(String[] args) {
+        String a = new String("Java");
+        String b = new String("Java");
+
+        System.out.println(a == b); // false (different objects)
+    }
+}
+```
+
+### OUTPUT
+
+```
+false
+```
+
+---
+
+## ✔ **Property 4 — Strings are final (cannot be extended)**
+
+```java
+// class MyString extends String {} ❌ ERROR
+```
+
+---
+
+## ✔ **Property 5 — Strings are stored as char[] internally**
+
+---
+
+# ✅ **2. STRING METHODS (BASIC → ADVANCED)**
+
+Below are the most important string methods with **code + output**.
+
+---
+
+# 🟩 **1. length()**
+
+```java
+public class StrLen {
+    public static void main(String[] args) {
+        String s = "Prathmesh";
+        System.out.println(s.length());
+    }
+}
+```
+
+### OUTPUT
+
+```
+9
+```
+
+---
+
+# 🟩 **2. charAt()**
+
+```java
+public class CharAtDemo {
+    public static void main(String[] args) {
+        String s = "Java";
+        System.out.println(s.charAt(2));
+    }
+}
+```
+
+### OUTPUT
+
+```
+v
+```
+
+---
+
+# 🟩 **3. substring()**
+
+### CODE
+
+```java
+public class SubstringDemo {
+    public static void main(String[] args) {
+        String s = "HelloWorld";
+
+        System.out.println(s.substring(0, 5)); // Hello
+        System.out.println(s.substring(5));    // World
+    }
+}
+```
+
+### OUTPUT
+
+```
+Hello
+World
+```
+
+---
+
+# 🟩 **4. equals() and equalsIgnoreCase()**
+
+```java
+public class EqualsDemo {
+    public static void main(String[] args) {
+
+        String a = "Java";
+        String b = "java";
+
+        System.out.println(a.equals(b));            // false
+        System.out.println(a.equalsIgnoreCase(b));  // true
+    }
+}
+```
+
+### OUTPUT
+
+```
+false
+true
+```
+
+---
+
+# 🟩 **5. compareTo()**
+
+Lexicographical comparison.
+
+```java
+public class CompareDemo {
+    public static void main(String[] args) {
+
+        System.out.println("apple".compareTo("banana"));
+        System.out.println("same".compareTo("same"));
+    }
+}
+```
+
+### OUTPUT
+
+```
+-1
+0
+```
+
+---
+
+# 🟩 **6. startsWith() / endsWith()**
+
+```java
+public class StartEnd {
+    public static void main(String[] args) {
+        String s = "JavaProgramming";
+
+        System.out.println(s.startsWith("Java"));
+        System.out.println(s.endsWith("ming"));
+    }
+}
+```
+
+### OUTPUT
+
+```
+true
+true
+```
+
+---
+
+# 🟩 **7. toUpperCase() / toLowerCase()**
+
+```java
+public class CaseDemo {
+    public static void main(String[] args) {
+        String s = "Java";
+
+        System.out.println(s.toUpperCase());
+        System.out.println(s.toLowerCase());
+    }
+}
+```
+
+### OUTPUT
+
+```
+JAVA
+java
+```
+
+---
+
+# 🟩 **8. trim()**
+
+Removes leading/trailing spaces.
+
+```java
+public class TrimDemo {
+    public static void main(String[] args) {
+        String s = "   Hello   ";
+        System.out.println(s.trim());
+    }
+}
+```
+
+### OUTPUT
+
+```
+Hello
+```
+
+---
+
+# 🟩 **9. contains()**
+
+```java
+public class ContainsDemo {
+    public static void main(String[] args) {
+        String s = "HelloWorld";
+        System.out.println(s.contains("World"));
+    }
+}
+```
+
+### OUTPUT
+
+```
+true
+```
+
+---
+
+# 🟩 **10. replace()**
+
+```java
+public class ReplaceDemo {
+    public static void main(String[] args) {
+        String s = "ababab";
+        System.out.println(s.replace("a", "x"));
+    }
+}
+```
+
+### OUTPUT
+
+```
+xbxbxb
+```
+
+---
+
+# 🟩 **11. split()**
+
+```java
+public class SplitDemo {
+    public static void main(String[] args) {
+        String s = "a-b-c-d";
+        String[] arr = s.split("-");
+
+        for (String x : arr) System.out.print(x + " ");
+    }
+}
+```
+
+### OUTPUT
+
+```
+a b c d
+```
+
+---
+
+# 🟩 **12. indexOf() / lastIndexOf()**
+
+```java
+public class IndexDemo {
+    public static void main(String[] args) {
+        String s = "programming";
+        System.out.println(s.indexOf('g'));       // first g
+        System.out.println(s.lastIndexOf('g'));   // last g
+    }
+}
+```
+
+### OUTPUT
+
+```
+3
+10
+```
+
+---
+
+# 🟩 **13. join()**
+
+```java
+public class JoinDemo {
+    public static void main(String[] args) {
+        String s = String.join("-", "Java", "is", "cool");
+        System.out.println(s);
+    }
+}
+```
+
+### OUTPUT
+
+```
+Java-is-cool
+```
+
+---
+
+# 🟩 **14. valueOf()**
+
+```java
+public class ValueOfDemo {
+    public static void main(String[] args) {
+        int x = 100;
+        String s = String.valueOf(x);
+        System.out.println(s + 50); // concatenation
+    }
+}
+```
+
+### OUTPUT
+
+```
+10050
+```
+
+---
+
+# 🟦 **DEEP EXTRA — STRINGBUILDER & STRINGBUFFER**
+
+(Mutable → Faster than String for updates)
+
+---
+
+## ✔ StringBuilder (most used)
+
+```java
+public class BuilderDemo {
+    public static void main(String[] args) {
+
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+
+        System.out.println(sb);
+    }
+}
+```
+
+### OUTPUT
+
+```
+Hello World
+```
+
+---
+
+## ✔ StringBuffer (Thread-safe)
+
+```java
+public class BufferDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Java");
+        sb.append(" Rocks");
+
+        System.out.println(sb);
+    }
+}
+```
+
+### OUTPUT
+
+```
+Java Rocks
+```
+
+---
+
+# 🎉 DONE — STRING PROPERTIES + ALL IMPORTANT METHODS
+
+(Every example has explanation + code + output)
+
+---
+
+## 👉 Next Topic?
+
+Popular choices:
+
+* StringBuilder methods
+* String pattern questions
+* Recursion
+* Stack / Queue
+* ArrayList
+* OOP (Encapsulation, Inheritance, Polymorphism)
+
+Tell me what to cover next!

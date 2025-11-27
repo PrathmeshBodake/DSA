@@ -1,0 +1,317 @@
+Below is **ARRAYS (BASIC → ADVANCED)** with **code + comments + outputs** AND your requested topics:
+
+✔ Linear Search
+✔ Binary Search
+✔ Trapping Rainwater
+✔ Extra information (basic → deep)
+
+I am keeping this as **your code section**, not theory-only — everything is demonstrated with **examples + code + output**.
+
+---
+
+# ✅ **0. Array Basics → Deep Concepts**
+
+## ✔ Declaring, Creating, Initializing Array
+
+```java
+public class ArrayBasics {
+    public static void main(String[] args) {
+
+        // Declare + create + initialize
+        int[] arr = {10, 20, 30, 40, 50};
+
+        // Access single element
+        System.out.println("arr[2] = " + arr[2]);
+
+        // Loop array
+        for(int i = 0; i < arr.length; i++) {
+            System.out.println("Index " + i + " → " + arr[i]);
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+arr[2] = 30
+Index 0 → 10
+Index 1 → 20
+Index 2 → 30
+Index 3 → 40
+Index 4 → 50
+```
+
+---
+
+# 🟩 **1. LINEAR SEARCH (Basic → Deep)**
+
+👉 Works on **any** array
+👉 Checks values **one by one**
+👉 Time Complexity = **O(n)**
+
+---
+
+## ✔ Example 1 — Basic Linear Search
+
+```java
+public class LinearSearch {
+    static int linearSearch(int[] arr, int target) {
+
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == target) {
+                return i; // return index
+            }
+        }
+        return -1; // not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 8, 12, 3, 9};
+
+        int index = linearSearch(arr, 12);
+        System.out.println("Found at index: " + index);
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+Found at index: 2
+```
+
+---
+
+## ✔ Example 2 — Linear Search for String Array
+
+```java
+public class LinearStr {
+    public static void main(String[] args) {
+
+        String[] names = {"Ram", "Sham", "Ajay"};
+
+        String target = "Sham";
+        int pos = -1;
+
+        for(int i = 0; i < names.length; i++) {
+            if(names[i].equals(target)) {
+                pos = i;
+                break;
+            }
+        }
+
+        System.out.println("Position: " + pos);
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+Position: 1
+```
+
+---
+
+# 🟩 **2. BINARY SEARCH (Basic → Deep)**
+
+👉 Works only on **sorted arrays**
+👉 Time Complexity = **O(log n)**
+👉 Uses **divide & conquer**
+
+---
+
+## ✔ Example 1 — Iterative Binary Search
+
+```java
+public class BinarySearch {
+
+    static int binarySearch(int[] arr, int target) {
+
+        int start = 0;
+        int end = arr.length - 1;
+
+        while(start <= end) {
+
+            int mid = start + (end - start) / 2;
+
+            if(arr[mid] == target) {
+                return mid; // found
+            }
+            else if(arr[mid] < target) {
+                start = mid + 1; // go right
+            }
+            else {
+                end = mid - 1; // go left
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 5, 8, 12, 16, 23};
+
+        System.out.println(binarySearch(arr, 12));
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+3
+```
+
+---
+
+## ✔ Example 2 — Recursive Binary Search
+
+```java
+public class BinaryRecursive {
+
+    static int search(int[] arr, int start, int end, int target) {
+
+        if(start > end) return -1;
+
+        int mid = start + (end - start) / 2;
+
+        if(arr[mid] == target) return mid;
+
+        if(target < arr[mid])
+            return search(arr, start, mid - 1, target);
+        else
+            return search(arr, mid + 1, end, target);
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {3, 6, 9, 12, 15};
+        int index = search(arr, 0, arr.length - 1, 15);
+
+        System.out.println(index);
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+4
+```
+
+---
+
+# 🟩 **3. TRAPPING RAINWATER Problem (Deep Explanation + Code)**
+
+👉 Hard-level problem
+👉 Water stored depends on:
+**leftMax[i] = max height left side**
+**rightMax[i] = max height right side**
+
+Water at index =
+`min(leftMax, rightMax) – height[i]`
+
+Time Complexity = **O(n)**
+Space = **O(n)**
+
+---
+
+## ✔ Example — Trapping Rainwater
+
+```java
+public class RainWater {
+
+    static int trap(int[] height) {
+
+        int n = height.length;
+
+        int[] leftMax = new int[n];
+        int[] rightMax = new int[n];
+
+        // 1. Build leftMax
+        leftMax[0] = height[0];
+        for(int i = 1; i < n; i++) {
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+
+        // 2. Build rightMax
+        rightMax[n - 1] = height[n - 1];
+        for(int i = n - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+        }
+
+        // 3. Water trapped
+        int water = 0;
+        for(int i = 0; i < n; i++) {
+            water += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+
+        return water;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {4, 2, 0, 3, 2, 5};
+
+        System.out.println("Total trapped water = " + trap(arr));
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+Total trapped water = 9
+```
+
+---
+
+# 🟦 **EXTRA: Deep Concepts You Asked For**
+
+## ✔ Array copying
+
+```java
+int[] a = {1,2,3};
+int[] b = a; // same memory (shallow copy)
+```
+
+## ✔ Deep copy
+
+```java
+int[] b = a.clone();
+```
+
+## ✔ Array length
+
+```java
+System.out.println(arr.length);
+```
+
+## ✔ Sorting array (built-in)
+
+```java
+import java.util.Arrays;
+Arrays.sort(arr);
+```
+
+## ✔ Reverse array (manual)
+
+```java
+int i = 0, j = arr.length-1;
+while(i < j){
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++; j--;
+}
+```
+
+---
+
+# 🎉 DONE — Arrays + Linear Search + Binary Search + Trapping Rainwater + Deep extras
+
+---
+
+### 👉 Send your next topic (Recursion / Sorting / Strings / ArrayList / OOP etc.)
+
+I will create **full code + comments + output + deep explanation**.

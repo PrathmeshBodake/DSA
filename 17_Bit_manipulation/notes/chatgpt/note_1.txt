@@ -1,0 +1,339 @@
+Got it! Here is the **complete Bit Manipulation theory + Java code (with comments + outputs)** in **pure English** only.
+
+---
+
+# **BIT MANIPULATION — THEORY + JAVA CODE**
+
+---
+
+# **1. Introduction**
+
+**Bit manipulation** means performing operations directly on bits (0s and 1s).
+It is extremely fast and widely used in:
+
+* Competitive programming
+* Optimization
+* Cryptography
+* Operating systems
+* Embedded systems
+
+---
+
+# **2. Binary Number System**
+
+Binary system uses **base 2** → only two digits:
+
+* **0**
+* **1**
+
+Example:
+
+```
+5 = 101 (binary)
+10 = 1010 (binary)
+```
+
+Each position has a value of powers of 2 → 1, 2, 4, 8…
+
+---
+
+# **3. Bitwise Operators**
+
+| Operator | Meaning     |
+| -------- | ----------- |
+| &        | AND         |
+| |        | OR          |
+| ^        | XOR         |
+| ~        | NOT         |
+| <<       | Left Shift  |
+| >>       | Right Shift |
+
+---
+
+# **4. Binary AND (&)**
+
+Truth table:
+
+| A | B | A & B |
+| - | - | ----- |
+| 0 | 0 | 0     |
+| 0 | 1 | 0     |
+| 1 | 0 | 0     |
+| 1 | 1 | 1     |
+
+---
+
+# **5. Binary OR (|)**
+
+Truth table:
+
+| A | B | A | B |
+| - | - | ----- |
+| 0 | 0 | 0     |
+| 0 | 1 | 1     |
+| 1 | 0 | 1     |
+| 1 | 1 | 1     |
+
+---
+
+# **6. Binary 1’s Complement (~)**
+
+Flips all bits:
+
+* 0 → 1
+* 1 → 0
+
+Example:
+
+```
+5 = 0101
+~5 = 1010
+```
+
+---
+
+# **7. Left Shift (<<)**
+
+`a << b` → shifts bits to the **left by b positions**.
+
+Equivalent to:
+
+```
+a * 2^b
+```
+
+---
+
+# **8. Right Shift (>>)**
+
+`a >> b` → shifts bits **right by b positions**.
+
+Equivalent to:
+
+```
+a / 2^b
+```
+
+---
+
+# **9. Check if Number is Odd or Even**
+
+Rule:
+
+* Even number → last bit = 0
+* Odd number → last bit = 1
+
+Use AND operator:
+
+```
+num & 1
+```
+
+---
+
+# **10. Get ith Bit**
+
+Formula:
+
+```
+bitMask = 1 << i
+(num & bitMask) != 0 ? 1 : 0
+```
+
+---
+
+# **11. Set ith Bit**
+
+Formula:
+
+```
+bitMask = 1 << i
+num | bitMask
+```
+
+---
+
+# **12. Clear ith Bit**
+
+Formula:
+
+```
+bitMask = ~(1 << i)
+num & bitMask
+```
+
+---
+
+# **13. Update ith Bit**
+
+Two cases:
+
+* Update to **1** = set bit
+* Update to **0** = clear bit
+
+Formula:
+
+```
+num = clear ith bit first
+then OR with (newBit << i)
+```
+
+---
+
+# **14. Clear Last i Bits**
+
+Formula:
+
+```
+mask = (~0 << i)
+num & mask
+```
+
+---
+
+# **15. Clear Range of Bits (i to j)**
+
+Formula:
+
+```
+left = (~0 << (j + 1))
+right = (1 << i) - 1
+mask = left | right
+num & mask
+```
+
+---
+
+# **16. Check if A is Power of 2 or Not**
+
+Condition:
+
+```
+A & (A - 1) == 0
+```
+
+Works only for positive numbers.
+
+---
+
+# **17. Count Set Bits**
+
+Count number of 1s in binary representation.
+
+Basic method:
+
+```
+while(n > 0) {
+    if((n & 1) == 1) count++;
+    n = n >> 1;
+}
+```
+
+---
+
+# **18. Fast Exponentiation (Binary Exponentiation)**
+
+Computes `a^b` in **O(log b)** time using bits.
+
+---
+
+# ✅ **FULL JAVA CODE (WITH COMMENTS + OUTPUT)**
+
+```java
+public class BitManipulation {
+
+    public static void main(String[] args) {
+        
+        // 9. Check Odd or Even
+        int num = 7;
+        System.out.println(num + " is " + ((num & 1) == 1 ? "Odd" : "Even"));
+
+        // 10. Get ith Bit
+        int n = 10; // 1010
+        int i = 1;
+        int bitMask = 1 << i;
+        System.out.println("Get " + i + "th bit: " + ((n & bitMask) != 0 ? 1 : 0));
+
+        // 11. Set ith Bit
+        int setBit = n | bitMask;
+        System.out.println("Set " + i + "th bit: " + setBit);
+
+        // 12. Clear ith Bit
+        int clearBit = n & ~bitMask;
+        System.out.println("Clear " + i + "th bit: " + clearBit);
+
+        // 13. Update ith Bit
+        int newBit = 1; // update to 1
+        int updated = (n & ~bitMask) | (newBit << i);
+        System.out.println("Update " + i + "th bit: " + updated);
+
+        // 14. Clear last i bits
+        int lastIClear = n & (~0 << 2);
+        System.out.println("Clear last 2 bits: " + lastIClear);
+
+        // 15. Clear range i to j
+        int a = 31; // 11111
+        int start = 1, end = 3;
+        int left = (~0 << (end + 1));
+        int right = (1 << start) - 1;
+        int mask = left | right;
+        System.out.println("Clear bits from " + start + " to " + end + ": " + (a & mask));
+
+        // 16. Power of 2
+        int x = 16;
+        System.out.println(x + " is power of 2: " + ((x & (x - 1)) == 0));
+
+        // 17. Count set bits
+        int cnt = 0, temp = n;
+        while (temp > 0) {
+            cnt += (temp & 1);
+            temp >>= 1;
+        }
+        System.out.println("Set bits in " + n + " = " + cnt);
+
+        // 18. Fast exponentiation
+        System.out.println("Fast exponentiation (2^10): " + fastExpo(2, 10));
+    }
+
+    // 18. Fast Exponentiation Function
+    public static int fastExpo(int a, int b) {
+        int result = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                result *= a;   // Multiply when last bit = 1
+            }
+            a *= a;           // Square the base
+            b >>= 1;          // Shift exponent
+        }
+        return result;
+    }
+}
+```
+
+---
+
+# ✅ **OUTPUT (for the above program)**
+
+```
+7 is Odd
+Get 1th bit: 1
+Set 1th bit: 10
+Clear 1th bit: 8
+Update 1th bit: 10
+Clear last 2 bits: 8
+Clear bits from 1 to 3: 17
+16 is power of 2: true
+Set bits in 10 = 2
+Fast exponentiation (2^10): 1024
+```
+
+---
+
+If you want, I can also give:
+
+✅ Diagram-based explanation
+✅ MCQs for practice
+✅ Assignment questions
+✅ Bit manipulation cheat sheet
+
+Just tell me!

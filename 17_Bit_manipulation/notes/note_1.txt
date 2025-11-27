@@ -1,0 +1,21 @@
+set bit  = the 1st number from this actual value starts
+0000100 , 0100 , 100  set bit = 1
+
+
+on paper 1's == on computer it is 2's
+because of LSB and MSB
+1st 0 = positive val   1st 1= negative
+on paper 5  = 0101 => 1010 = 10
+code 00000000......101  (32 bit)
+
+~a = 111111.....010   => 1st 1 represent -ve val then add it on original val
+101 + 1 = 110
+
+
+left shift  5 * 2**4
+5 << 4  5 = 0000101
+left shift = shifted by 4  = 1010000
+
+right shift 5 / 2**4
+5 >> 4  5 = 101
+right shift = shifted by 4 = 00.0101

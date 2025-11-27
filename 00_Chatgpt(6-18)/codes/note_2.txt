@@ -1,0 +1,300 @@
+Perfect!
+Here is **CODE-ONLY + COMMENTS + OUTPUT + ALL SUBPOINT EXAMPLES** for your topic:
+
+# ✅ **CONDITIONS IN JAVA (Complete Example Set)**
+
+Below are **all conditional structures** in Java, each with:
+
+✔ Explanation in comments
+✔ Java code
+✔ Output
+
+---
+
+# 🟩 **1. if Statement**
+
+Used when you want to run code only if condition is TRUE.
+
+```java
+public class IfDemo {
+    public static void main(String[] args) {
+
+        int age = 20;
+
+        // if condition
+        if (age >= 18) {
+            System.out.println("You are eligible to vote.");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+You are eligible to vote.
+```
+
+---
+
+# 🟩 **2. if–else Statement**
+
+Runs one block if TRUE, another if FALSE.
+
+```java
+public class IfElseDemo {
+    public static void main(String[] args) {
+
+        int marks = 45;
+
+        if (marks >= 40) {
+            System.out.println("Pass");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Pass
+```
+
+---
+
+# 🟩 **3. if–else if–else (Ladder)**
+
+Used for **multiple conditions**.
+
+```java
+public class LadderDemo {
+    public static void main(String[] args) {
+
+        int score = 75;
+
+        if (score >= 90) {
+            System.out.println("Grade A");
+        } else if (score >= 75) {
+            System.out.println("Grade B");
+        } else if (score >= 60) {
+            System.out.println("Grade C");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Grade B
+```
+
+---
+
+# 🟩 **4. Nested if**
+
+if inside another if.
+
+```java
+public class NestedIfDemo {
+    public static void main(String[] args) {
+
+        int age = 22;
+        boolean hasID = true;
+
+        if (age >= 18) {
+            if (hasID) {
+                System.out.println("Entry Allowed");
+            } else {
+                System.out.println("ID Required");
+            }
+        } else {
+            System.out.println("Not Allowed");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Entry Allowed
+```
+
+---
+
+# 🟩 **5. Ternary Operator (?:)**
+
+Shorter version of if-else.
+
+```java
+public class TernaryDemo {
+    public static void main(String[] args) {
+
+        int num = 7;
+
+        String result = (num % 2 == 0) ? "Even" : "Odd";
+
+        System.out.println(result);
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Odd
+```
+
+---
+
+# 🟩 **6. Switch Statement**
+
+Used when multiple fixed values are checked.
+
+```java
+public class SwitchDemo {
+    public static void main(String[] args) {
+
+        int day = 3;
+
+        switch(day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            default:
+                System.out.println("Invalid Day");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Wednesday
+```
+
+---
+
+# 🟩 **7. Switch with String**
+
+Switch also works with string values.
+
+```java
+public class SwitchStringDemo {
+    public static void main(String[] args) {
+
+        String color = "Red";
+
+        switch(color) {
+            case "Red":
+                System.out.println("Stop");
+                break;
+            case "Yellow":
+                System.out.println("Wait");
+                break;
+            case "Green":
+                System.out.println("Go");
+                break;
+            default:
+                System.out.println("Invalid Color");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Stop
+```
+
+---
+
+# 🟩 **8. Switch with Multiple Cases (Fall Through)**
+
+Used when different cases have same output.
+
+```java
+public class MultiCaseDemo {
+    public static void main(String[] args) {
+
+        int month = 4;
+
+        switch(month) {
+            case 1:
+            case 2:
+            case 3:
+                System.out.println("Quarter 1");
+                break;
+
+            case 4:
+            case 5:
+            case 6:
+                System.out.println("Quarter 2");
+                break;
+
+            default:
+                System.out.println("Other Quarter");
+        }
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Quarter 2
+```
+
+---
+
+# 🟩 **9. Enhanced Switch (Java 14+)**
+
+Modern switch with arrow syntax.
+
+```java
+public class EnhancedSwitchDemo {
+    public static void main(String[] args) {
+
+        int day = 1;
+
+        String result = switch(day) {
+            case 1 -> "Monday";
+            case 2 -> "Tuesday";
+            default -> "Other Day";
+        };
+
+        System.out.println(result);
+    }
+}
+```
+
+### **OUTPUT:**
+
+```
+Monday
+```
+
+---
+
+# 🎉 Done!
+
+All Java conditional statements + examples + outputs are covered.
+
+---
+
+### 👉 Now send your next topic with subpoints.
+
+I’ll convert each one into **JAVA CODE + EXAMPLES + OUTPUT**.

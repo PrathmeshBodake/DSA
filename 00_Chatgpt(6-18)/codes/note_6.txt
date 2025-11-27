@@ -1,0 +1,490 @@
+Here is **ALL BASIC SORTING ALGORITHMS** with **code + comments + outputs + deep understanding**, exactly how you want.
+
+✔ Bubble Sort
+✔ Selection Sort
+✔ Insertion Sort
+✔ Inbuilt Sort
+✔ Counting Sort
+
+Every algorithm has:
+
+* Clean Java code
+* Step-by-step comments
+* Output
+* (Extra concepts where needed)
+
+Let's begin.
+
+---
+
+# ✅ **0. Sample Array for Sorting**
+
+We will test all algorithms on:
+
+```java
+int[] arr = {5, 3, 8, 4, 2};
+```
+
+---
+
+# 🟩 **1. BUBBLE SORT (Basic → Deep)**
+
+👉 Repeatedly compares **adjacent elements**
+👉 Largest element *bubbles* to the end each pass
+👉 Time: **O(n²)**
+
+---
+
+## ✔ Bubble Sort Code
+
+```java
+public class BubbleSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+
+        // bubble sort
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+
+                if (arr[j] > arr[j + 1]) {
+
+                    // swap
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        // print sorted array
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+2 3 4 5 8
+```
+
+---
+
+# 🟩 **2. SELECTION SORT**
+
+👉 Select the **minimum element** from unsorted part
+👉 Put it at the beginning
+👉 Time: **O(n²)**
+
+---
+
+## ✔ Selection Sort Code
+
+```java
+public class SelectionSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            int minIndex = i;
+
+            // find minimum element
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // swap min element with i
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+2 3 4 5 8
+```
+
+---
+
+# 🟩 **3. INSERTION SORT**
+
+👉 Good for **small** or **nearly sorted** arrays
+👉 Takes an element & inserts into correct position
+👉 Time: **O(n²)** but BEST case **O(n)**
+
+---
+
+## ✔ Insertion Sort Code
+
+```java
+public class InsertionSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+
+        for (int i = 1; i < arr.length; i++) {
+
+            int current = arr[i];
+            int j = i - 1;
+
+            // shift greater elements to right
+            while (j >= 0 && arr[j] > current) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            // insert element
+            arr[j + 1] = current;
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+2 3 4 5 8
+```
+
+---
+
+# 🟩 **4. INBUILT SORT (Arrays.sort)**
+
+👉 Uses **Dual-Pivot QuickSort** for primitives
+👉 Time Complexity: **O(n log n)**
+
+---
+
+## ✔ Inbuilt Sort Code
+
+```java
+import java.util.Arrays;
+
+public class InbuiltSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+
+        Arrays.sort(arr); // inbuilt sorting
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+2 3 4 5 8
+```
+
+---
+
+# 🟩 **5. COUNTING SORT**
+
+👉 Only works on **non-negative integers**
+👉 Good when max value is not very large
+👉 Time Complexity: **O(n + k)** (k = max element)
+
+---
+
+# ✔ Counting Sort Code
+
+```java
+public class CountingSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 3, 8, 4, 2};
+
+        // 1. find max value
+        int max = arr[0];
+        for (int x : arr) {
+            if (x > max) max = x;
+        }
+
+        // 2. create count array
+        int[] count = new int[max + 1];
+
+        // 3. frequency store
+        for (int x : arr) {
+            count[x]++;
+        }
+
+        // 4. write sorted output
+        int index = 0;
+        for (int i = 0; i < count.length; i++) {
+
+            while (count[i] > 0) {
+                arr[index] = i;
+                index++;
+                count[i]--;
+            }
+        }
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+    }
+}
+```
+
+### **OUTPUT**
+
+```
+2 3 4 5 8
+```
+
+---
+
+# 🎯 **EXTRA DEEP KNOWLEDGE (AS REQUESTED)**
+
+| Algorithm      | Best Case  | Worst Case | Stable? | Works on              | Notes                          |
+| -------------- | ---------- | ---------- | ------- | --------------------- | ------------------------------ |
+| Bubble Sort    | O(n)       | O(n²)      | YES     | Any                   | Slow but simple                |
+| Selection Sort | O(n²)      | O(n²)      | NO      | Any                   | Least swaps                    |
+| Insertion Sort | O(n)       | O(n²)      | YES     | Any                   | Best for small/n-almost sorted |
+| Inbuilt Sort   | O(n log n) | O(n log n) | NO      | Primitives            | Dual-Pivot QuickSort           |
+| Counting Sort  | O(n+k)     | O(n+k)     | YES     | Non-negative integers | Very fast when k small         |
+
+---
+
+# 🎉 DONE — All sorting algorithms with code + comments + outputs
+
+---
+
+### 👉 NEXT TOPIC?
+
+Popular next ones:
+
+* Merge Sort
+* Quick Sort
+* Recursion
+* Strings
+* ArrayList
+* Two-pointer techniques
+
+Tell me your next topic + subpoints.
+
+
+
+
+
+Awesome — I’ll continue with the next important sorting algorithms: **Merge Sort** and **Quick Sort**.
+As always: **only code + comments explaining steps + example output**.
+
+---
+
+# 🔷 Merge Sort (Divide & Conquer, Stable, O(n log n))
+
+Save as `MergeSort.java`
+
+```java
+// MergeSort.java
+// Stable divide-and-conquer sorting.
+// Comments explain every step and memory behavior (extra info).
+
+public class MergeSort {
+
+    // Public API: sort the array in-place
+    public static void mergeSort(int[] arr) {
+        if (arr == null || arr.length < 2) return;
+        mergeSortHelper(arr, 0, arr.length - 1);
+    }
+
+    // Recursive helper that sorts arr[l..r]
+    private static void mergeSortHelper(int[] arr, int l, int r) {
+        if (l >= r) return; // base: one element
+
+        int mid = l + (r - l) / 2;
+
+        // divide: sort left half
+        mergeSortHelper(arr, l, mid);
+
+        // divide: sort right half
+        mergeSortHelper(arr, mid + 1, r);
+
+        // conquer: merge two sorted halves
+        merge(arr, l, mid, r);
+    }
+
+    // Merge two sorted subarrays arr[l..mid] and arr[mid+1..r]
+    private static void merge(int[] arr, int l, int mid, int r) {
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
+
+        // create temporary arrays (extra memory O(n))
+        int[] left = new int[n1];
+        int[] right = new int[n2];
+
+        for (int i = 0; i < n1; i++) left[i] = arr[l + i];
+        for (int j = 0; j < n2; j++) right[j] = arr[mid + 1 + j];
+
+        int i = 0, j = 0, k = l;
+
+        // merge by comparing elements (stable)
+        while (i < n1 && j < n2) {
+            if (left[i] <= right[j]) { // <= preserves stability
+                arr[k++] = left[i++];
+            } else {
+                arr[k++] = right[j++];
+            }
+        }
+
+        // copy any remaining elements
+        while (i < n1) arr[k++] = left[i++];
+        while (j < n2) arr[k++] = right[j++];
+    }
+
+    // Example usage and output
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 8, 4, 2, 7, 1, 6};
+
+        System.out.print("Before: ");
+        printArray(arr);
+
+        mergeSort(arr);
+
+        System.out.print("After : ");
+        printArray(arr);
+    }
+
+    private static void printArray(int[] arr) {
+        for (int x : arr) System.out.print(x + " ");
+        System.out.println();
+    }
+}
+```
+
+### Example OUTPUT (when run)
+
+```
+Before: 5 3 8 4 2 7 1 6 
+After : 1 2 3 4 5 6 7 8 
+```
+
+---
+
+# 🔶 Quick Sort (Divide & Conquer, In-place, Average O(n log n), not stable)
+
+Save as `QuickSort.java`
+
+```java
+// QuickSort.java
+// In-place quicksort using Lomuto partition (simple to understand).
+// Comments explain pivot choice, partitioning and recursion.
+
+public class QuickSort {
+
+    // Public API
+    public static void quickSort(int[] arr) {
+        if (arr == null || arr.length < 2) return;
+        quickSortHelper(arr, 0, arr.length - 1);
+    }
+
+    // Recursive helper
+    private static void quickSortHelper(int[] arr, int low, int high) {
+        if (low >= high) return;
+
+        // partition returns pivot index in final position
+        int p = partition(arr, low, high);
+
+        // sort left side
+        quickSortHelper(arr, low, p - 1);
+
+        // sort right side
+        quickSortHelper(arr, p + 1, high);
+    }
+
+    // Lomuto partition: choose pivot as last element
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high]; // pivot value
+        int i = low - 1;       // place for swapping smaller elements
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) { // <= puts equals to left — not stable globally
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high); // place pivot to correct index
+        return i + 1;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        if (i == j) return;
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+    // Example usage and output
+    public static void main(String[] args) {
+        int[] arr = {33, 10, 55, 71, 29, 3, 18, 42};
+
+        System.out.print("Before: ");
+        printArray(arr);
+
+        quickSort(arr);
+
+        System.out.print("After : ");
+        printArray(arr);
+    }
+
+    private static void printArray(int[] arr) {
+        for (int x : arr) System.out.print(x + " ");
+        System.out.println();
+    }
+}
+```
+
+### Example OUTPUT (when run)
+
+```
+Before: 33 10 55 71 29 3 18 42 
+After : 3 10 18 29 33 42 55 71 
+```
+
+---
+
+# ⚠️ Extra notes (concise)
+
+* **Merge Sort**
+
+  * Stable, guaranteed O(n log n), needs O(n) extra space.
+  * Good for linked lists (no extra array needed).
+* **Quick Sort**
+
+  * In-place, average O(n log n), worst-case O(n²) if pivot poor.
+  * Use randomized pivot or median-of-three to reduce worst-case risk.
+  * Not stable by default.
+
+---
+
+Want me to:
+
+* add **randomized pivot** or **in-place iterative** versions?
+* implement **merge sort bottom-up (iterative)** or **3-way quicksort** (for many duplicates)?
+
+Say which variant you want next and I’ll give code + comments + output.
