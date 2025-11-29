@@ -1,5 +1,5 @@
 import java.util.*;
-
+// time complexity O(n)
 public class Factorial{
     public static int fact(int n){
 
