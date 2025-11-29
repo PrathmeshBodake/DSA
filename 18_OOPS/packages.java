@@ -3,7 +3,7 @@ import java.util.*;
 public class packages {
     public static void main(String args[]){
 
-        Scanner sc = new Scanner(System in);
+        Scanner sc = new Scanner(System.in);
         int a = sc.nextInt(); // it is a function nextInt()
         // scanner is class we able to get it using util package 
 
