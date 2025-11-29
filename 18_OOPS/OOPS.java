@@ -1,4 +1,4 @@
-package OOPS;
+
 public class OOPS {
     public static void main(String args[]){
         Pen p1 = new Pen(); // created pen obj
